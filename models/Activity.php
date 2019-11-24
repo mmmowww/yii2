@@ -15,7 +15,7 @@ public $bdWeek;   //2) Table of the weekly schedule. It often changes. and is ch
 public $reapit;  // Recurring event of the day
 public $Block;    // bulian // Block of the day
 
-public $DayRules;  // Rules for the current day. Reminds "return"
+public $DayRule;  // Rules for the current day. Reminds "return"
 
 
 

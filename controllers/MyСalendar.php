@@ -12,10 +12,11 @@ class MyСalendar extends Controler{
 public function actionGetMyCalendar(){
 
     $data = array();
+    ////
     $DATE = new app\models\Activity;
     
 	return $this->render('calendar',
-        'DATE' => $DATE,
+        'DATE' => $DATE
         );
 }
 
