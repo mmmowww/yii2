@@ -8,7 +8,7 @@ class activityid extends \yii\base\Model {
 
 
 public function actionRedactor(){
-	return $this->render('redactor');
+	return $this->render('redactor');   
 }
 
 } 

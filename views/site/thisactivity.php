@@ -7,3 +7,4 @@ $this->title = $name = "This Activity";
 <?= "this Activity" ?>
 <?= "this Activity info" ?> <a href = "#"> red </a> 
 <?= "this Activity info" ?> <a href = "#"> red </a> 
+

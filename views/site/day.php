@@ -26,7 +26,7 @@ $this->title = 'this day'.$thisday;
          <td> 9 часов </td>
         <td><?=" ActivityName" ?></td>
         <td><?=" Activity " ?></td>
-        <td><?=" ActivityInfo "?></td>
+        <td><?=" ActivityInfo "?></td>     
         <td> X </td> 
     </tr>
     <tr>

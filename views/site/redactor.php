@@ -16,6 +16,6 @@ $this->title = "Activity Redactor";
 <?= $active->field($model,"ip");  ?>
 
 <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary']) ?>
-<?php var_dump($_POST)?>
+<?php var_dump($_POST);?>
 <? ActiveForm::end();?>
 

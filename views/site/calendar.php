@@ -11,7 +11,7 @@ $this->title = $name = "Calendar";
 
 
 <table>
-    <tr>
+    <tr>   
         <td> Понидельник :</td>
         <td> <?= "<a href ='http://yii2/index.php?r=site/day' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
         <td> Вторник :</td>
