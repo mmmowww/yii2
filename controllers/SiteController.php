@@ -11,6 +11,7 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\BDSEARCH;
 use app\models\EntryForm;
+use app\models\idredactor;
 
 class SiteController extends Controller
 {
@@ -194,7 +195,26 @@ public function actionEntry()
             return $this->render('test', ['model' => $model]);
         }
     }
+///////////////////////////////
+   
+  public function  actionCalendar(){
 
+   // $data = array();
+    ////
+  //  $DATE = new app\models\Activity;
     
-    
+    return $this->render('calendar');
+        ///,['DATE' => $DATE]);
+}
+public function actionDay(){
+    return $this->render('day');
+}
+
+public function actionThisactivity(){
+    return $this->render('thisactivity');
+}
+///////////////////////////////////    
+public function actionRedactor(){
+    return $this->render('redactor');
+}
 }

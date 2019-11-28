@@ -1,4 +1,4 @@
-<?php
+
 
 
 <?php
@@ -9,5 +9,8 @@ use yii\db\ActiveRecord;
 
 class Day extends Models {
 	
+	public function actionDay(){
+		return $this->render('day');
+	}
 }
 
