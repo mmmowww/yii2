@@ -215,6 +215,8 @@ public function actionThisactivity(){
 }
 ///////////////////////////////////    
 public function actionRedactor(){
-    return $this->render('redactor');
+      $model =  new idredactor();
+   
+    return $this->render('redactor',['model' => $model]);;
 }
 }
