@@ -18,6 +18,8 @@ public function rules()
     {
         return [
             
+
+            
             [['idActivity', 'ActivityInfo', 'date', 'ip'], 'required'],
             
             
