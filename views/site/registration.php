@@ -14,15 +14,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php $form = ActiveForm::begin(); ?>
 
-        <?= $form->field($model,'userName')->textInput() ?>
+        <?= $form->field($model, 'userName')->textInput() ?>
 
-        <?= $form->field($model,'userPassword')->textInput() ?>
+        <?= $form->field($model, 'userPassword')->textInput() ?>
 
-        <?= $form->field($model,'userEmail')->textInput() ?>
+         <?= $form->field($model, 'userEmail')->textInput() ?>
 
-        <?= $form->field($model, 'rememberMe')->checkbox([
-            'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
-        ]) ?>
+
+        
 
         <div class="form-group">
             <div class="col-lg-offset-1 col-lg-11">
@@ -32,8 +31,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php ActiveForm::end(); ?>
 
+
+
+<?=var_dump($test);?>
     <div class="col-lg-offset-1" style="color:#999;">
         You may login with <strong>admin/admin</strong> or <strong>demo/demo</strong>.<br>
         To modify the username/password, please check out the code <code>app\models\User::$users</code>.
     </div>
 </div>
+
+
+

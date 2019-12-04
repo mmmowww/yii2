@@ -13,13 +13,12 @@ $this->createTable('{{%day}}', [
             'ActivityName' => $this->string(),
             'Activity' => $this->text(),
             'ActivityInfo' => $this->dateTime(),
-            ///////////////////////
             'userName' => $this->text(),
             'date' => $this->date(),
             
 ]);
 /////////////////////////////////////////
-
+/*
         $this->createIndex(
             '{{%idx-day-mounth_id}}',
             '{{%mounth}}',
@@ -35,7 +34,7 @@ $this->addForeignKey(
             'CASCADE',
             'CASCADE'
         );
-
+*/
 //////////////////////////////////////
     }
 

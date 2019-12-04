@@ -12,6 +12,12 @@ use app\models\ContactForm;
 use app\models\BDSEARCH;
 use app\models\EntryForm;
 use app\models\idredactor;
+use app\models\Registration;
+use app\models\login;
+use app\models\Activity;
+use app\models\insertActivity;
+
+
 
 class SiteController extends Controller
 {
@@ -211,12 +217,136 @@ public function actionDay(){
 }
 
 public function actionThisactivity(){
-    return $this->render('thisactivity');
+   
+    /////// EditActivity /////////6699/////
+    $model = new Activity();
+    $request = Yii::$app->request->post();
+    $Activity  = Activity::find()->asArray()->orderBy('id')->all();
+    $insert = new insertActivity();
+    $test = $Activity;
+    ////////Проверка
+    $dataStart  = $request['Activity']['dataStart'];
+    $dateFinish  = $request['Activity']['dateFinish'];
+    ////////////////////////////////////////////////////////////////
+    if($dataStart <= $dateFinish){
+     
+$id = $request['Activity']['id'];
+$activity= $request['Activity']['activity'];
+$activityinfo= $request['Activity']['activityinfo'];
+$currentDate = $request['Activity']['currentDate'];
+$dataStart= $request['Activity']['dataStart'];
+$dateFinish = $request['Activity']['dataFinish'];
+$userName = $request['Activity']['userName'];   
+$bdMount= $request['Activity']['bdMounth'];
+$bdWeek= $request['Activity']['bdWeek'];  
+$bdDay= $request['Activity']['bdDay'];  
+$reapit= $request['Activity']['reapit'];  
+$Block= $request['Activity']['Block'];  
+
+ Yii::$app->db->createCommand("INSERT INTO `activity` (`id`, `activity`, `activityinfo`, `currentDate`, `dataStart`, `dateFinish`, `userName`, `bdMount`, `bdWeek`, `bdDay`, `reapit`, `Block`, `DayRule`) VALUES (NULL, '".$activity."', '".$activityinfo."', NULL, '".$dataStart."', '".$dataFinish."', '".$userName."', '2019-12-11', '".$bdWeek."', '".$bdDay."', '".$reapit."', '".$Block."', NULL);")->execute();
+    }
+/////////////////////////////////////////////// ////////
+    //// Добить редактировку
+ $request = Yii::$app->request->post();
+
+ $Editid = $request['Activity']['Editid'];
+ $Editactivity = $request['Activity']['Editactivity'];
+ $Editactivityinfo = $request['Activity']['Editactivityinfo'];
+ $EditcurrentDate = $request['Activity']['EditcurrentDate'];
+ $EditdataStart = $request['Activity']['EditdataStart'];
+ $EditdateFinish = $request['Activity']['EditdateFinish'];
+ $EdituserName = $request['Activity']['EdituserName']; 
+ $EditbdMount = $request['Activity']['EditbdMount'];
+ $EditbdWeek = $request['Activity']['EditbdWeek'];
+ $EditbdDay = $request['Activity']['EditbdDay'];
+ $Editreapit = $request['Activity']['Editreapit'];
+ $EditBlock = $request['Activity']['EditBlock'];
+ $EditDayRule = $request['Activity']['EditDayRule'];
+
+    ("UPDATE `activity` SET `activity` = '".$Editactivity."', `activityinfo` = '".$Editactivityinfo."', `currentDate` = '2019-12-05 00:00:00', `userName` = '".$EdituserName."', `bdWeek` = '".$EditbdWeek."', `bdDay` = '".$EditbdDay."' WHERE `activity`.`id` = ".$Editid.";")
+
+
+
+
+
+
+////////
+ return $this->render('thisactivity',
+  ['model'=>$model,
+  'test'=>$test,
+'Activity' => $Activity,
+]
+);
 }
-///////////////////////////////////    
+
+/////////6699/////
+
 public function actionRedactor(){
       $model =  new idredactor();   
    
-    return $this->render('redactor',['model' => $model]);;
+    return $this->render('redactor',['model' => $model]);
+}
+public function actionRegistration(){
+ // $model = new login();
+//////////////////Неработает
+//  $model->userName = Yii::$app->request->post('userName');
+//  $model->userPasword = Yii::$app->request->post('userPasword');
+//  $model->userEmail =  Yii::$app->request->post('userEmail');
+//  $model->save();
+////////////////////////Неработает
+ /*
+ $request = Yii::$app->request;
+ $model->userName = $request->post('userName');
+ $model->userPassword = $request->post('userPassword');
+ $model->userEmail = $request->post('userEmail');
+*/
+//////////////////////////////
+
+
+
+$model = new Registration();
+$request = Yii::$app->request->post();
+
+
+$userName = $request["Registration"]['userName'];
+$userPasword = $request["Registration"]['userPassword'];
+$userEmail =  $request["Registration"]['userEmail'];
+
+ ////////Worked \/
+ Yii::$app->db->createCommand("INSERT INTO `accountuser` (`id`, `userName`, `userPassword`, `userEmail`, `userRole`) VALUES (NULL, '".$userName."', '".$userPasword."', '".$userEmail."', 'NULL');")->execute();
+/////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+$test = $userName;
+
+
+  return $this->render('registration',[
+    'model'=>$model,
+    'test'=>$test
+    
+  ]);
+}
+public function actionLoginok(){
+  
+ 
+  
+  return $this->render('loginok');
+}
+public function actionEdit(){
+  
+ 
+  
+  return $this->render('editactivity');
 }
 }

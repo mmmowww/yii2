@@ -18,7 +18,7 @@ class m191129_110313_user extends Migration
             
 ]);
      /////////////////////////////////////////////////////
-     
+     /*
      $this->addForeignKey(
             '{{%id_for_user_activity}}'
             'id',
@@ -28,7 +28,7 @@ class m191129_110313_user extends Migration
             'CASCADE',
             'CASCADE'
         );
-        
+       */ 
      //////////////////////////////////////
     }
   public function safeDown()
