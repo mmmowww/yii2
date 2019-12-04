@@ -20,7 +20,8 @@ class m191201_143544_core extends Migration
             'created_at' => $this->datetime()->defaultValue(date('Y-m-d H:i:s')),
             'updated_at' => $this->datetime(),
         ]);
-
+      ///////////////////////////////////////////
+/*
         // creates index for column `status_id`
         $this->createIndex(
             '{{%idx-tasks-status_id}}',
@@ -74,6 +75,8 @@ class m191201_143544_core extends Migration
             'CASCADE',
             'CASCADE'
         );
+*/
+        //////////////////////////////////////////////
     }
 
     public function safeDown()

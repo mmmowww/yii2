@@ -3,16 +3,27 @@
 use yii\db\Migration;
 
 
-class m191129_104114_create_activity_table extends Migration
+/**
+ * Class m191203_155443_Activity
+ */
+class m191203_155443_Activity extends Migration
 {
-    
+    /**
+     * {@inheritdoc}
+     */
     public function safeUp()
     {
-        $this->createTable('{{%create_activity_table}}', [
+
+
+
+$this->createTable('{{%activity}}', [
             'id' => $this->primaryKey(),
             'activity' => $this->string(),
             'activityinfo' => $this->text(),
+            ////////////////
             'currentDate' => $this->dateTime(),
+            'dataStart' => $this->integer(),
+            'dateFinish' => $this->integer(),
             ///////////////////////
             'userName' => $this->text(),
             'bdMount' => $this->date(),
@@ -23,32 +34,35 @@ class m191129_104114_create_activity_table extends Migration
             'DayRule' => $this->json(),
         ]);
 
-        //////////////////////////
-/*
-        $this->createIndex(
-            '{{%idx-activity-user_id}}',
-            '{{%user}}',
-            'user'
-        );
-
-       
-        $this->addForeignKey(
-            '{{%idx_activity_user}}',
-            'id',
-            '{{%user}}',
-            'userName',
-            '{{%user}}',
-            'CASCADE',
-            'CASCADE'
-        );
-       
 
 
-*/ 
-       /////////////////////
+
+
+
+
+
     }
+
+    /**
+     * {@inheritdoc}
+     */
     public function safeDown()
     {
-        $this->dropTable('{{%create_activity_table}}');
+        $this->dropTable('{{$activity}}');
     }
+
+    /*
+    // Use up()/down() to run migration code without a transaction.
+    public function up()
+    {
+
+    }
+
+    public function down()
+    {
+        echo "m191203_155443_Activity cannot be reverted.\n";
+
+        return false;
+    }
+    */
 }

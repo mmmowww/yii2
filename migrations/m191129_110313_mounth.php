@@ -20,7 +20,7 @@ class m191129_110313_mounth extends Migration
             
 ]);
   //////////////////////////////////////////////////////////  
-
+/*
     $this->addForeignKey(
             '{{%id_for_mounth_day}}'
             'id',
@@ -30,7 +30,7 @@ class m191129_110313_mounth extends Migration
             'CASCADE',
             'CASCADE'
         );
-      
+ */     
 //////////////////////////////////////////////////////
     }
     public function safeDown()
