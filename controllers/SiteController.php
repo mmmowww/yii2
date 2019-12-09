@@ -16,7 +16,8 @@ use app\models\Registration;
 use app\models\login;
 use app\models\Activity;
 use app\models\insertActivity;
-
+use app\models\useredit;
+use app\components\MyBehavior;
 
 
 class SiteController extends Controller
@@ -223,7 +224,7 @@ public function actionThisactivity(){
     $request = Yii::$app->request->post();
     $Activity  = Activity::find()->asArray()->orderBy('id')->all();
     $insert = new insertActivity();
-    $test = $Activity;
+   
     ////////Проверка
     $dataStart  = $request['Activity']['dataStart'];
     $dateFinish  = $request['Activity']['dateFinish'];
@@ -242,7 +243,7 @@ $bdWeek= $request['Activity']['bdWeek'];
 $bdDay= $request['Activity']['bdDay'];  
 $reapit= $request['Activity']['reapit'];  
 $Block= $request['Activity']['Block'];  
-
+////////////
  Yii::$app->db->createCommand("INSERT INTO `activity` (`id`, `activity`, `activityinfo`, `currentDate`, `dataStart`, `dateFinish`, `userName`, `bdMount`, `bdWeek`, `bdDay`, `reapit`, `Block`, `DayRule`) VALUES (NULL, '".$activity."', '".$activityinfo."', NULL, '".$dataStart."', '".$dataFinish."', '".$userName."', '2019-12-11', '".$bdWeek."', '".$bdDay."', '".$reapit."', '".$Block."', NULL);")->execute();
     }
 /////////////////////////////////////////////// ////////
@@ -263,7 +264,7 @@ $Block= $request['Activity']['Block'];
  $EditBlock = $request['Activity']['EditBlock'];
  $EditDayRule = $request['Activity']['EditDayRule'];
 
-    ("UPDATE `activity` SET `activity` = '".$Editactivity."', `activityinfo` = '".$Editactivityinfo."', `currentDate` = '2019-12-05 00:00:00', `userName` = '".$EdituserName."', `bdWeek` = '".$EditbdWeek."', `bdDay` = '".$EditbdDay."' WHERE `activity`.`id` = ".$Editid.";")
+    Yii::$app->db->createCommand("UPDATE `activity` SET `activity` = '".$Editactivity."', `activityinfo` = '".$Editactivityinfo."', `currentDate` = '2019-12-05 00:00:00', `userName` = '".$EdituserName."', `bdWeek` = '".$EditbdWeek."', `bdDay` = '".$EditbdDay."' WHERE `activity`.`id` = ".$Editid.";");
 
 
 
@@ -271,10 +272,9 @@ $Block= $request['Activity']['Block'];
 
 
 ////////
- return $this->render('thisactivity',
-  ['model'=>$model,
-  'test'=>$test,
-'Activity' => $Activity,
+ return $this->render('thisactivity',[
+  'model'=>$model,
+  'Activity' => $Activity,
 ]
 );
 }
@@ -349,4 +349,70 @@ public function actionEdit(){
   
   return $this->render('editactivity');
 }
+public function actionEdituser(){
+    $Request = Yii::$app->request->post();
+    $bd = new useredit();
+    $activity = new Activity();
+    $model = new useredit();
+ 
+    $MyCompanentsBehavior = $model->userRegistered();
+////////ADD
+
+if(is_null($request['useredit']['Adid']) or null !== $request['useredit']['Adid'] or empty($request['useredit']['Adid'])){
+
+ 
+
+
+
+$bd->id = $reqvest['Adid']; 
+$bd->userName = $reqvest['AduserName'];  
+$bd->password = $reqvest['Adpassword']; 
+$bd->save();
+
+}
+
+///////Delite
+if(is_null($request['useredit']['Delid']) or null !== $request['useredit']['Delid'] or empty($request['useredit']['Delid'])){
+
+
+$id =$reqvest['Delid'];     
+$userName = $reqvest['DeluserName'];  
+$password = $reqvest['Delpassword']; 
+
+  
+$bd->id =$reqvest['Delid'];     
+$bd->userName = $reqvest['DeluserName'];  
+$bd->password = $reqvest['Delpassword']; 
+$bd->delete(); 
+
+}
+
+///////Edit
+if(is_null($request['useredit']['Editid']) or null !== $$request['useredit']['Editid'] or empty($$request['useredit']['Editid'])){
+
+
+
+$id =$reqvest['Editid'];     
+$userName = $reqvest['EdituserName'];  
+$password = $reqvest['Editpassword']; 
+
+
+ $bd->id =$reqvest['Editid'];     
+$bd->userName = $reqvest['EdituserName'];  
+$bd->password = $reqvest['Editpassword']; 
+$bd->update();
+
+
+}
+
+
+return $this->render('useredit',['model' => $model,
+                                  'MyCompanentsBehavior'=>$MyCompanentsBehavior,
+                                ]);
+//        'admodel'=>$admodel,
+//        'Delmodel'=>$Delmodel,
+//        'Editmodel'=>$Editmodel,
+//        ]);
+
+  }
 }

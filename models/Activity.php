@@ -4,6 +4,7 @@ namespace app\models;
 use Yii;
 use yii\db\ActiveRecord;
 
+
 class Activity extends ActiveRecord {
 
 public static function tableName(){
@@ -24,8 +25,38 @@ public static function tableName(){
  public $reapit; 	
  public $Block; 	
  public $DayRule; 
-
-
-
-} 
-
+/*
+ ////////behev
+public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::class,
+                'createdAtAttribute' => 'created_at',
+                'updatedAtAttribute' => 'updated_at',
+                'value' => time()
+            ]
+        ];
+    }
+    public function attributeLabels()
+    {	   
+        return [
+ 'id' => $id,
+ 'activity' => $activity,
+ 'activityinfo' => $activityinfo ,
+ 'currentDate' => $currentDate ,
+ 'dataStart' => $dataStart,
+ 'dateFinish' => $dateFinish,
+ 'userName' => $userName,
+ 'bdMount' => $bdMount,
+ 'bdWeek' => $bdWeek,
+ 'bdDay' => $bdDay,
+ 'reapit' => $reapit,
+ 'Block' => $block,
+ 'DayRule' => $DayRule,
+];
+    
+   }
+/////////
+*/
+}
