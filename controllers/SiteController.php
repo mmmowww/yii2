@@ -209,12 +209,31 @@ public function actionEntry()
    // $data = array();
     ////
   //  $DATE = new app\models\Activity;
-    
-    return $this->render('calendar');
+    //// 
+  $Activity=Activity::find()->asArray()->all();
+  
+    return $this->render('calendar',[
+      'Activity'=>$Activity
+    ]);
         ///,['DATE' => $DATE]);
 }
 public function actionDay(){
-    return $this->render('day');
+  $id = Yii::$app->request->post('id');
+
+
+
+
+
+
+
+
+
+
+  $Activity  =  Activity::find()->from('Activity')->where(['id'=>$id])->limit(10)->all();
+    return $this->render('day',[
+'Activity'=>$Activity
+
+    ]);
 }
 
 public function actionThisactivity(){
@@ -414,5 +433,25 @@ return $this->render('useredit',['model' => $model,
 //        'Editmodel'=>$Editmodel,
 //        ]);
 
+  }
+  public function actionPersonaluser(){
+   $activityUser = new Activity();
+   $activity = new useredit();
+    $request = Yii::$app->request->post();
+   /// $casheBD = ;
+   /////
+$model;
+ $sessionUserName = Yii::$app->request->post('userName');
+   ///////
+  
+   $user = $activityUser::find()->asArray()->where('userName = :userName', [':userName' => $sessionUserName])->all(); // Ввыборка по базе текущего пользователя
+
+    return $this->render('personaluser',
+      [
+'activityUser'=>$activityUser,
+'activity'=>$activity,
+'request'=>$request,
+
+      ]);
   }
 }

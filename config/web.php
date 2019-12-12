@@ -18,6 +18,15 @@ $config = [
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
+            'useMemcashed'=> true,
+            'servers'=> [
+                [
+                    'host'=>'localhost',
+                    'port'=>3306,
+                    'persistent'=>false,
+
+                ],
+            ]
         ],
         'user' => [
             'identityClass' => 'app\models\User',

@@ -59,4 +59,15 @@ public function behaviors()
    }
 /////////
 */
+   public static function findOne($condition){
+    if(Yii::$app->cashe->exist(self::tableName().'_'.$condition) === false){
+        $result = parent::findOne($condition);
+        Yii::$app->cashe->set(self::tableName().'_'.$condition);
+        return parent::findOne($condition);
+    }else {
+        return Yii::$app->cashe->get(self::tableName().'_'.$condition);
+    }
+    
+   }
 }
+/////////
