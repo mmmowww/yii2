@@ -17,6 +17,20 @@ $this->title = 'this day'.$thisday;
 
 ?>
 
+<h2>Этот потресающий день</h2>
+<?=$Activity['id']?>
+<?=$Activity['activity']?>
+<?=$Activity['activityinfo']?>
+<?=$Activity['currentDate']?>
+<?=$Activity['dataStart']?>
+<?=$Activity['dateFinish']?>
+<?=$Activity['userName']?>
+<?=$Activity['bdMount']?>
+<?=$Activity['bdWeek']?>
+<?=$Activity['bdDay']?>
+<?=$Activity['DayRule']?>
+
+
 <?= edofre\fullcalendar\Fullcalendar::widget([
         'options'       => [
             'id'       => 'calendar',
@@ -50,7 +64,7 @@ $MyEvent->id = $Calendar['id'];
 $MyEvent->title = $Calendar['activity'];
 $MyEvent->allDay=$Calendar['currentDate'];
 $MyEvent->start = $Calendar['dataStart'];
-$MyEvent->end= $Calendar['dataFinish'];
+$MyEvent->end= $Calendar['dateFinish'];
 echo '<h4>День</h4>';
 echo $MyEvent->id;
 echo '</br>';
@@ -68,5 +82,15 @@ echo $MyEvent->end;
    };
 ?>
 
-<a href = "http://yii2/index.php?r=site/redactor">Редактор</a>
-<a href = "http://yii2/index.php?r=site/calendar">Вернуться в календарь</a>
+
+<?php // Пакет хелпер
+$edit = Url::to(['site/thisactivity']);
+$calendar = Url::to(['site/calendar']);
+?>
+
+<a href = <?=$edit?>>Редактор</a>
+<a href = <?=$calendar?>>Вернуться в календарь</a>
+
+
+
+

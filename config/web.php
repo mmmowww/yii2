@@ -18,6 +18,8 @@ $config = [
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
+            ///////////////////////
+            /*
             'useMemcashed'=> true,
             'servers'=> [
                 [
@@ -27,6 +29,8 @@ $config = [
 
                 ],
             ]
+            */
+            ////////////////////////
         ],
         'user' => [
             'identityClass' => 'app\models\User',
@@ -52,14 +56,21 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
+        /////////
+
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+           '/'=>'site/index',
+           '<action :(about|contact|login)>'=>'site<action>',
+           'calendar/<id:\d+>'=>'calendar/view',
+           'day/<id:\d+>'=>'id/day',
+
             ],
         ],
-        */
+        
+       
     ],
     'params' => $params,
 ];
