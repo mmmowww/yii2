@@ -41,17 +41,16 @@ $MyEvent = new Event;
 $MyEvent->id = $Calendar['id'];
 //////
 //Форма перехода
-echo "<a href ='http://yii2/index.php?r=site/day' > Day </a>";
-
-
+echo '<h4>День</h4>';
+$URL = Url::to(['site/day','id'=>$MyEvent->id]);  // Долго сражался с тем что бы сделать примую ссылку.
+echo '<a href = "'.$URL.'" >'.$MyEvent->id.'</a>';  // Пришлось сделать "Пакет" "$URL" Поечму то так выводить отказывалась <?= 
 
 //////
 $MyEvent->title = $Calendar['activity'];
 $MyEvent->allDay=$Calendar['currentDate'];
 $MyEvent->start = $Calendar['dataStart'];
 $MyEvent->end= $Calendar['dataFinish'];
-echo '<h4>День</h4>';
-echo $MyEvent->id;
+
 echo '</br>';
 echo $MyEvent->title;
 echo '</br>';
@@ -73,72 +72,74 @@ echo $MyEvent->end;
         'events'=>$events
     ]);
 ?>
-
-<h1>----------</h1>
-
+<?php /// Красота каторую я ещё не успел доделать
+/*
 <table>
     <tr>   
         <td> Понидельник :</td>
-        <td> <?= "<a href ='http://yii2/index.php?r=site/day' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
+        <td> <?= "<a href ='".Url::to(['site/day','id'=>1])."' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
         <td> Вторник :</td>
-        <td> <?= "<a href ='http://yii2/index.php?r=site/day' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
+        <td> <?= "<a href ='".Url::to(['site/day','id'=>2])."' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
         <td> Среда :</td>
-        <td> <?= "<a href ='http://yii2/index.php?r=site/day' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
+        <td> <?= "<a href ='".Url::to(['site/day','id'=>3])."' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
         <td> Четверг :</td>
-        <td> <?= "<a href ='http://yii2/index.php?r=site/day' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
+        <td> <?= "<a href ='".Url::to(['site/day','id'=>4])."' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
         <td> Пятница :</td>
-        <td> <?= "<a href ='http://yii2/index.php?r=site/day' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
+        <td> <?= "<a href ='".Url::to(['site/day','id'=>5])."' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
         <td> Суббота :</td>
-        <td> <?= "<a href ='http://yii2/index.php?r=site/day' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
+        <td> <?= "<a href ='".Url::to(['site/day','id'=>6])."' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
         <td> Воскресенье :</td>
-        <td> <?= "<a href ='http://yii2/index.php?r=site/day' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
+        <td> <?= "<a href ='".Url::to(['site/day','id'=>7])."' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
     </tr>
     <tr>
                 <td> Понидельник :</td>
-        <td> <?= "<a href ='http://yii2/index.php?r=site/day' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
+        <td> <?= "<a href ='".Url::to(['site/day','id'=>8])."' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
         <td> Вторник :</td>
-        <td> <?= "<a href ='http://yii2/index.php?r=site/day' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
+        <td> <?= "<a href ='".Url::to(['site/day','id'=>9])."' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
         <td> Среда :</td>
-        <td> <?= "<a href ='http://yii2/index.php?r=site/day' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
+        <td> <?= "<a href ='".Url::to(['site/day','id'=>10])."' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
         <td> Четверг :</td>
-        <td> <?= "<a href ='http://yii2/index.php?r=site/day' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
+        <td> <?= "<a href ='".Url::to(['site/day','id'=>11])."' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
         <td> Пятница :</td>
-        <td> <?= "<a href ='http://yii2/index.php?r=site/day' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
+        <td> <?= "<a href ='".Url::to(['site/day','id'=>12])."' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
         <td> Суббота :</td>
-        <td> <?= "<a href ='http://yii2/index.php?r=site/day' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
+        <td> <?= "<a href ='".Url::to(['site/day','id'=>13])."' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
         <td> Воскресенье :</td>
-        <td> <?= "<a href ='http://yii2/index.php?r=site/day' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
+        <td> <?= "<a href ='".Url::to(['site/day','id'=>14])."' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
     </tr>
     <tr>
               <td> Понидельник :</td>
-        <td> <?= "<a href ='http://yii2/index.php?r=site/day' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
+        <td> <?= "<a href ='".Url::to(['site/day','id'=>15])."' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
         <td> Вторник :</td>
-        <td> <?= "<a href ='http://yii2/index.php?r=site/day' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
+        <td> <?= "<a href ='".Url::to(['site/day','id'=>16])."' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
         <td> Среда :</td>
-        <td> <?= "<a href ='http://yii2/index.php?r=site/day' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
+        <td> <?= "<a href ='".Url::to(['site/day','id'=>17])."' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
         <td> Четверг :</td>
-        <td> <?= "<a href ='http://yii2/index.php?r=site/day' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
+        <td> <?= "<a href ='".Url::to(['site/day','id'=>18])."' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
         <td> Пятница :</td>
-        <td> <?= "<a href ='http://yii2/index.php?r=site/day' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
+        <td> <?= "<a href ='".Url::to(['site/day','id'=>19])."' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
         <td> Суббота :</td>
-        <td> <?= "<a href ='http://yii2/index.php?r=site/day' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
+        <td> <?= "<a href ='".Url::to(['site/day','id'=>20])."' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
         <td> Воскресенье :</td>
-        <td> <?= "<a href ='http://yii2/index.php?r=site/day' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>  
+        <td> <?= "<a href ='".Url::to(['site/day','id'=>21])."' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
     </tr>
     <tr>
                 <td> Понидельник :</td>
-        <td> <?= "<a href ='http://yii2/index.php?r=site/day' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
+        <td> <?= "<a href ='".Url::to(['site/day','id'=>22])."' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
         <td> Вторник :</td>
-        <td> <?= "<a href ='http://yii2/index.php?r=site/day' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
+        <td> <?= "<a href ='".Url::to(['site/day','id'=>23])."' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
         <td> Среда :</td>
-        <td> <?= "<a href ='http://yii2/index.php?r=site/day' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
+        <td> <?= "<a href ='".Url::to(['site/day','id'=>24])."' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
         <td> Четверг :</td>
-        <td> <?= "<a href ='http://yii2/index.php?r=site/day' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
+        <td> <?= "<a href ='".Url::to(['site/day','id'=>25])."' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
         <td> Пятница :</td>
-        <td> <?= "<a href ='http://yii2/index.php?r=site/day' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
+        <td> <?= "<a href ='".Url::to(['site/day','id'=>26])."' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
         <td> Суббота :</td>
-        <td> <?= "<a href ='http://yii2/index.php?r=site/day' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
+        <td> <?= "<a href ='".Url::to(['site/day','id'=>27])."' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
         <td> Воскресенье :</td>
-        <td> <?= "<a href ='http://yii2/index.php?r=site/day' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
+        <td> <?= "<a href ='".Url::to(['site/day','id'=>28])."' > Day </a>";?></td><td> <?= " false "; ?> </td><td> <?= "DATE" ?></td>
     </tr>
 </table>
+
+*/
+?>

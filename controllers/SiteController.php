@@ -217,19 +217,9 @@ public function actionEntry()
     ]);
         ///,['DATE' => $DATE]);
 }
-public function actionDay(){
-  $id = Yii::$app->request->post('id');
+public function actionDay($id){
 
-
-
-
-
-
-
-
-
-
-  $Activity  =  Activity::find()->from('Activity')->where(['id'=>$id])->limit(10)->all();
+  $Activity  =  Activity::find()->asArray()->from('Activity')->where(['id'=>$id])->limit(10)->all();
     return $this->render('day',[
 'Activity'=>$Activity
 
@@ -241,7 +231,7 @@ public function actionThisactivity(){
     /////// EditActivity /////////6699/////
     $model = new Activity();
     $request = Yii::$app->request->post();
-    $Activity  = Activity::find()->asArray()->orderBy('id')->all();
+    $Activity  = Activity::find()->asArray()->all();
     $insert = new insertActivity();
    
     ////////Проверка
@@ -263,7 +253,7 @@ $bdDay= $request['Activity']['bdDay'];
 $reapit= $request['Activity']['reapit'];  
 $Block= $request['Activity']['Block'];  
 ////////////
- Yii::$app->db->createCommand("INSERT INTO `activity` (`id`, `activity`, `activityinfo`, `currentDate`, `dataStart`, `dateFinish`, `userName`, `bdMount`, `bdWeek`, `bdDay`, `reapit`, `Block`, `DayRule`) VALUES (NULL, '".$activity."', '".$activityinfo."', NULL, '".$dataStart."', '".$dataFinish."', '".$userName."', '2019-12-11', '".$bdWeek."', '".$bdDay."', '".$reapit."', '".$Block."', NULL);")->execute();
+ $insert = Yii::$app->db->createCommand("INSERT INTO `activity` (`id`, `activity`, `activityinfo`, `currentDate`, `dataStart`, `dateFinish`, `userName`, `bdMount`, `bdWeek`, `bdDay`, `reapit`, `Block`, `DayRule`) VALUES (NULL, '".$activity."', '".$activityinfo."', NULL, '".$dataStart."', '".$dataFinish."', '".$userName."', '2019-12-11', '".$bdWeek."', '".$bdDay."', '".$reapit."', '".$Block."', NULL);")->execute();
     }
 /////////////////////////////////////////////// ////////
     //// Добить редактировку
@@ -283,7 +273,7 @@ $Block= $request['Activity']['Block'];
  $EditBlock = $request['Activity']['EditBlock'];
  $EditDayRule = $request['Activity']['EditDayRule'];
 
-    Yii::$app->db->createCommand("UPDATE `activity` SET `activity` = '".$Editactivity."', `activityinfo` = '".$Editactivityinfo."', `currentDate` = '2019-12-05 00:00:00', `userName` = '".$EdituserName."', `bdWeek` = '".$EditbdWeek."', `bdDay` = '".$EditbdDay."' WHERE `activity`.`id` = ".$Editid.";");
+  $update =  Yii::$app->db->createCommand("UPDATE `activity` SET `activity` = '".$Editactivity."', `activityinfo` = '".$Editactivityinfo."', `currentDate` = '2019-12-05 00:00:00', `userName` = '".$EdituserName."', `bdWeek` = '".$EditbdWeek."', `bdDay` = '".$EditbdDay."' WHERE `activity`.`id` = ".$Editid.";");
 
 
 

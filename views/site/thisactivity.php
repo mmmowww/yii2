@@ -136,3 +136,7 @@ echo '</br> Next Block </br>';
         </div>
 
     <?php ActiveForm::end(); ?>
+
+
+   <? $calendar = Url::to(['site/calendar']); ?>
+<a href = <?=$calendar?>>Вернуться в календарь</a>
